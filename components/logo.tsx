@@ -16,7 +16,7 @@ export const Logo = () => {
         <p
           className={cn("text-lg text-neutral-700", headingFont.className)}
         >
-          Taskify
+          TaskZen
         </p>
       </div>
     </Link>
