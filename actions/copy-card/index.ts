@@ -2,7 +2,7 @@
 
 import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
-// import { ACTION, ENTITY_TYPE } from "@prisma/client";
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { createAuditLog } from "@/lib/create-audit-log";
@@ -56,12 +56,12 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    // await createAuditLog({
-    //   entityTitle: card.title,
-    //   entityId: card.id,
-    //   entityType: ENTITY_TYPE.CARD,
-    //   action: ACTION.CREATE,
-    // })
+    await createAuditLog({
+      entityTitle: card.title,
+      entityId: card.id,
+      entityType: ENTITY_TYPE.CARD,
+      action: ACTION.CREATE,
+    })
   } catch (error) {
     return {
       error: "Failed to copy."
