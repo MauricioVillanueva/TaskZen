@@ -139,24 +139,10 @@ const grad8 = {
   },
 };
 
-// const grad2 = {
-//   initial: {
-//     x1: "100%",
-//     x2: "0%",
-//     y1: "0%",
-//     y2: "0%",
-//   },
-//   animate: {
-//     x1: ["100%", "50%", "20%"],
-//     x2: ["100%", "0%", "0%"],
-//     y1: ["0%", "0%", "80%"],
-//     y2: ["0%", "20%", "60%"],
-//   },
-// };
 
 export const PulseBeams = () => {
   return (
-    <div className="flex h-[40rem] w-full relative items-center justify-center antialiased overflow-hidden">
+    <div className="flex h-[60rem] w-full relative items-center justify-center antialiased overflow-hidden">
       {/* Core SVGs component */}
       <div className="absolute inset-0 flex items-center justify-center w-full">
         <SVGs />
@@ -168,9 +154,9 @@ export const PulseBeams = () => {
 export const SVGs = () => {
   return (
     <svg
-      height="600"
+      height="60rem"
       width="1280"
-      viewBox="0 0 1280 434"
+      viewBox="0 0 1280 900"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="flex flex-shrink-0"
@@ -238,8 +224,8 @@ export const SVGs = () => {
       />
 
       <path
-        d="M483 200H130C128 200 120 195.523 120 190V40"
-        stroke="url(#grad8)"
+         d="M373 180H20C13 180 10 175 10 170V20"
+         stroke="url(#grad8)"
       />
       
 
@@ -374,57 +360,57 @@ export const SVGs = () => {
         </motion.linearGradient>
       </defs>
       <circle
-        cx="1051"
-        cy="34"
+        cx="1273"
+        cy="1"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
-        cx="770"
-        cy="427"
+        cx="950"
+        cy="54rem"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
-        cx="142"
-        cy="427"
+        cx="150"
+        cy="54rem"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
-        cx="7"
-        cy="398.5"
+        cx="10"
+        cy="57.5rem"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
         cx="390"
-        cy="7"
+        cy="1"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
-        cx="655"
-        cy="-75"
+        cx="770"
+        cy="1"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
         cx="1273"
-        cy="398.5"
+        cy="57.5rem"
         r="6.5"
         fill="var(--slate-700)"
         stroke="var(--slate-600)"
       />
       <circle
-      cx="7"
-      cy="34"
+      cx="10"
+      cy="1"
       r="6.5"
       fill="var(--slate-700)"
       stroke="var(--slate-600)"
