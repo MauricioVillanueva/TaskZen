@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PulseBeams } from "@/components/ui/pulseBeam";
+import { BackgroundGradientAnimation } from "@/components/ui/backgroundGradient";
 
 const headingFont = localFont({ src: "../../public/fonts/font.woff2" });
 
@@ -56,13 +57,16 @@ const MarketingPage = () => {
       >
         <Link href="/sign-up">Get Started</Link>
       </Button>
-      <div className="w-auto h-[1000px] flex items-center justify-center overflow-visible">
+      <div className="w-auto h-[1080px] flex items-center justify-center overflow-visible">
+        <BackgroundGradientAnimation/>
         <div className="absolute z-10 w-full">
           <PulseBeams />
         </div>
-        {/* <div className="absolute z-20 w-full">
+        {/* ⤵⤵ REVISAR ⤵⤵ */}
+
+        <div className="absolute z-20 w-full">
           <Spline scene="https://prod.spline.design/xCXMzigFrR4lX1JG/scene.splinecode" />
-        </div> */}
+        </div>
       </div>
       <div className=" bg-[#F5F7F9] w-3/4 h-[270px] flex flex-col items-center justify-around py-6 rounded-3xl">
         <h2 className={cn("font-semibold text-[60px]", roboto.className)}>
