@@ -3,10 +3,10 @@
   import { useEffect, useRef, useState } from "react";
 
   export const BackgroundGradientAnimation = ({
-    gradientBackgroundStart = "rgb(10 , 57, 127 )",
-    gradientBackgroundEnd = "rgb(30, 41, 59)",
+    gradientBackgroundStart = "rgb(0 , 1, 1 )",
+    gradientBackgroundEnd = "rgb(0, 20, 20)",
     firstColor = "0, 34, 102",
-    secondColor = "0, 51, 153",
+    secondColor = "0, 51, 153", 
     thirdColor = "13, 61, 155",
     fourthColor = "102, 0, 0",
     fifthColor = "133, 0, 0",

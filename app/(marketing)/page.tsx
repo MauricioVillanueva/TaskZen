@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PulseBeams } from "@/components/ui/pulseBeam";
 import { BackgroundGradientAnimation } from "@/components/ui/backgroundGradient";
+import { InfiniteMovingCardsDemo } from "@/components/ui/infiniteDemo";
+import { HeroScrollDemo } from "@/components/ui/heroScrollDemo";
 
 const headingFont = localFont({ src: "../../public/fonts/font.woff2" });
 
@@ -24,7 +26,7 @@ const roboto = Roboto({
 
 const MarketingPage = () => {
   return (
-    <div className="flex items-center justify-center flex-col relative z-10 gap-y-10">
+    <div className="flex items-center justify-center flex-col relative z-10 gap-y-20">
       <div
         className={cn(
           "flex items-center justify-center flex-col text-white",
@@ -43,22 +45,28 @@ const MarketingPage = () => {
       </div>
       <div
         className={cn(
-          "text-sm md:text-xl text-white mt-4 max-w-xs md:max-w-2xl text-center mx-auto",
+          "text-sm md:text-xl text-white max-w-xs md:max-w-2xl text-center mx-auto pb-10 flex flex-col justify-center items-center",
           textFont.className
         )}
       >
         Plan projects, build workflows and manage resources with powerful
         features your whole team can use.
+        <Button
+          className="mt-6 bg-[#EDEDED] hover:bg-[#CCCCCC] text-base text-black"
+          size="lg"
+          asChild
+        >
+          <Link
+            href="/sign-up"
+            className={cn("font-medium ", textFont.className)}
+          >
+            Get Started
+          </Link>
+        </Button>
       </div>
-      <Button
-        className="mt-6 bg-[#FC4F24] hover:bg-[#b83b1c]"
-        size="lg"
-        asChild
-      >
-        <Link href="/sign-up">Get Started</Link>
-      </Button>
+
       <div className="w-auto h-[1080px] flex items-center justify-center overflow-visible">
-        <BackgroundGradientAnimation/>
+        <BackgroundGradientAnimation />
         <div className="absolute z-10 w-full">
           <PulseBeams />
         </div>
@@ -68,28 +76,18 @@ const MarketingPage = () => {
           <Spline scene="https://prod.spline.design/xCXMzigFrR4lX1JG/scene.splinecode" />
         </div>
       </div>
-      <div className=" bg-[#F5F7F9] w-3/4 h-[270px] flex flex-col items-center justify-around py-6 rounded-3xl">
-        <h2 className={cn("font-semibold text-[60px]", roboto.className)}>
-          Trusted by Companies like
-        </h2>
-        <div className="w-full h-auto flex justify-between items-center px-10">
-          <img className="w-auto h-20" src="/Logos/Github.png" />
-          <img className="w-auto h-20" src="/Logos/Notion.png" />
-          <img className="w-auto h-20" src="/Logos/Calendar.png" />
-          <img className="w-auto h-20" src="/Logos/Slack.png" />
-          <img className="w-auto h-20" src="/Logos/Outlook.png" />
-        </div>
-      </div>
+        <HeroScrollDemo/>
+      
       <div
         className={cn(
-          "w-[700px] h-auto py-4 flex flex-col items-center justify-center text-white",
+          "w-[900px] h-auto pb-20 flex flex-col items-center justify-center text-white gap-y-10",
           roboto.className
         )}
       >
-        <h2 className="font-bold text-[45px]">
+        <h2 className="font-bold text-[60px]">
           What you need, when you need it
         </h2>
-        <h4 className="text-[26px] font-normal text-[#B7B7B7] text-center">
+        <h4 className="text-[26px] font-normal text-[#B7B7B7] text-center w-[800px]">
           Effortlessly manage tasks and tools in one place, minimizing
           distractions and maximizing productivity.
         </h4>
@@ -131,7 +129,7 @@ const MarketingPage = () => {
           </h4>
         </div>
         <div className="bg-transparent p-6 rounded-[40px] w-auto bg-opacity-50">
-          <div className="w-auto h-auto bg-[#2D2E32] rounded-[32px] overflow-hidden">
+          <div className="w-auto h-auto bg-[#2D2E32] rounded-[24px] overflow-hidden">
             <Image width={600} height={10} src="/BoardTwo.svg" alt="BoardTwo" />
           </div>
         </div>
