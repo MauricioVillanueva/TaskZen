@@ -1,16 +1,21 @@
 "use client";
-import Link from "next/link";
+
 import localFont from "next/font/local";
 import { Poppins, Roboto } from "next/font/google";
 import Spline from "@splinetool/react-spline";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PulseBeams } from "@/components/ui/pulseBeam";
 import { BackgroundGradientAnimation } from "@/components/ui/backgroundGradient";
-import { InfiniteMovingCardsDemo } from "@/components/ui/infiniteDemo";
 import { HeroScrollDemo } from "@/components/ui/heroScrollDemo";
+import { HeroSection } from "@/components/ui/heroSection";
+
+import { motion } from "framer-motion";
+import { slideIn } from "../../utils/motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import Lenis from "../../node_modules/lenis";
 
 const headingFont = localFont({ src: "../../public/fonts/font.woff2" });
 
@@ -25,59 +30,57 @@ const roboto = Roboto({
 });
 
 const MarketingPage = () => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  });
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+  const [ref2, inView2] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
   return (
-    <div className="flex items-center justify-center flex-col relative z-10 gap-y-20">
+    <div className="flex items-center justify-center flex-col relative z-10 gap-y-[40px] overflow-x-hidden">
       <div
         className={cn(
           "flex items-center justify-center flex-col text-white",
           headingFont.className
         )}
       >
-        <div className="text-3xl md:text-6xl text-center mb-6 flex items-center">
+        <div className="text-3xl md:text-6xl text-center mb-2 flex items-center">
           <h1>From Ideas to</h1>&nbsp;
           <h1 className="text-[#FC4F24]">Done</h1> &nbsp;{" "}
           <img className="w-auto h-24" src="/Check.png" />
         </div>
-        <div className="text-3xl md:text-6xl px-4 p-2 rounded-md w-fit flex">
+        <div className="text-3xl md:text-6xl px-4 rounded-md w-fit flex">
           <h1>Tazk's Makes It</h1>&nbsp;{" "}
           <h1 className="text-[#FC4F24] underline">Happen.</h1>
         </div>
       </div>
-      <div
-        className={cn(
-          "text-sm md:text-xl text-white max-w-xs md:max-w-2xl text-center mx-auto pb-10 flex flex-col justify-center items-center",
-          textFont.className
-        )}
-      >
-        Plan projects, build workflows and manage resources with powerful
-        features your whole team can use.
-        <Button
-          className="mt-6 bg-[#EDEDED] hover:bg-[#CCCCCC] text-base text-black"
-          size="lg"
-          asChild
-        >
-          <Link
-            href="/sign-up"
-            className={cn("font-medium ", textFont.className)}
-          >
-            Get Started
-          </Link>
-        </Button>
-      </div>
 
+      <HeroSection />
       <div className="w-auto h-[1080px] flex items-center justify-center overflow-visible">
         <BackgroundGradientAnimation />
         <div className="absolute z-10 w-full">
           <PulseBeams />
         </div>
-        {/* ⤵⤵ REVISAR ⤵⤵ */}
-
         <div className="absolute z-20 w-full">
           <Spline scene="https://prod.spline.design/xCXMzigFrR4lX1JG/scene.splinecode" />
         </div>
       </div>
-        <HeroScrollDemo/>
-      
+      <HeroScrollDemo />
+
       <div
         className={cn(
           "w-[900px] h-auto pb-20 flex flex-col items-center justify-center text-white gap-y-10",
@@ -92,13 +95,26 @@ const MarketingPage = () => {
           distractions and maximizing productivity.
         </h4>
       </div>
-      <div className="w-full h-auto flex justify-center items-center gap-x-[16vw]">
-        <div className="bg-transparent p-6 rounded-[40px] w-auto bg-opacity-50">
-          <div className="w-auto h-auto bg-[#2D2E32] rounded-[24px] overflow-hidden">
+      <div
+        className="w-full h-auto flex justify-center items-center gap-x-[16vw] overflow-hidden"
+        ref={ref}
+      >
+        <motion.div
+          variants={slideIn("left", "tween", 0.2, 1)}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+          className="bg-transparent p-6 rounded-[40px] w-auto bg-opacity-50"
+        >
+          <div className="w-auto h-auto bg-slate-300/[0.2] rounded-[20px] overflow-x-hidden">
             <Image width={600} height={10} src="/BoardOne.svg" alt="BoardOne" />
           </div>
-        </div>
-        <div className="flex flex-col text-white w-[540px] gap-y-4">
+        </motion.div>
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+          className="flex flex-col text-white w-[540px] gap-y-4"
+        >
           <h2
             className={cn(
               "font-bold text-[45px] leading-[50px]",
@@ -111,10 +127,18 @@ const MarketingPage = () => {
             Use the Roadmap to bring everyone together on the same page and help
             keep them there. Use the Roadmap to bring everyone.
           </h4>
-        </div>
+        </motion.div>
       </div>
-      <div className="w-full h-auto flex justify-center items-center gap-x-[16vw]">
-        <div className="flex flex-col text-white w-[540px] gap-y-4">
+      <div
+        className="w-full h-auto flex justify-center items-center gap-x-[16vw]"
+        ref={ref2}
+      >
+        <motion.div
+          variants={slideIn("left", "tween", 0.2, 1)}
+          initial="hidden"
+          animate={inView2 ? "show" : "hidden"}
+          className="flex flex-col text-white w-[540px] gap-y-4"
+        >
           <h2
             className={cn(
               "font-bold text-[45px] leading-[50px]",
@@ -127,12 +151,17 @@ const MarketingPage = () => {
             Always keep in mind the progress of your project and that of your
             colleagues.
           </h4>
-        </div>
-        <div className="bg-transparent p-6 rounded-[40px] w-auto bg-opacity-50">
-          <div className="w-auto h-auto bg-[#2D2E32] rounded-[24px] overflow-hidden">
+        </motion.div>
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          initial="hidden"
+          animate={inView2 ? "show" : "hidden"}
+          className="bg-transparent p-6 rounded-[40px] w-auto bg-opacity-50"
+        >
+          <div className="w-auto h-auto bg-slate-300/[0.2] rounded-[20px] overflow-x-hidden">
             <Image width={600} height={10} src="/BoardTwo.svg" alt="BoardTwo" />
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="w-full h-[440px] bg-[#F5F9FC] flex justify-center items-center my-20 gap-x-[16vw]">
         <div className="w-[520px] h-auto flex flex-col gap-y-8">

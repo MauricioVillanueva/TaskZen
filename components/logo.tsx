@@ -11,13 +11,9 @@ const headingFont = localFont({
 export const Logo = () => {
   return (
     <Link href="/">
-      <div className="hover:opacity-75 transition items-center gap-x-2 hidden md:flex">
-        <Image src="/Tazk.png" alt="Logo" height={30} width={30} />
-        <p
-          className={cn("text-lg text-neutral-700", headingFont.className)}
-        >
-          Tazk
-        </p>
+      <div className="transition items-center justify-center gap-x-2 hidden md:flex">
+        <Image src="/TazkWhite.svg" alt="Logo" height={40} width={40} />
+        <p className={cn("text-2xl text-white/85 transition-colors duration-200 hover:text-white", headingFont.className)}>Tazk</p>
       </div>
     </Link>
   );

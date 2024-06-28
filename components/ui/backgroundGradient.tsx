@@ -3,8 +3,8 @@
   import { useEffect, useRef, useState } from "react";
 
   export const BackgroundGradientAnimation = ({
-    gradientBackgroundStart = "rgb(0 , 1, 1 )",
-    gradientBackgroundEnd = "rgb(0, 20, 20)",
+    gradientBackgroundStart = "rgb(0 , 0, 0 )",
+    gradientBackgroundEnd = "rgb(0, 0, 0)",
     firstColor = "0, 34, 102",
     secondColor = "0, 51, 153", 
     thirdColor = "13, 61, 155",
@@ -93,6 +93,10 @@
           containerClassName
         )}
       >
+        <div
+          style={{ boxShadow: "inset 0px 0px 100px 100px #000" }}
+          className="absolute z-10 w-[1920px] h-[1080px]"
+        />
         <svg className="hidden">
           <defs>
             <filter id="blurMe">

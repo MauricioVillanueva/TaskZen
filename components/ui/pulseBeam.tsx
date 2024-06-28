@@ -129,7 +129,7 @@ export const PulseBeams = () => {
       {/* Core SVGs component */}
       <div className="absolute inset-0 flex items-center justify-center w-full">
         <div
-          style={{ boxShadow: "inset 0px 0px 100px 100px #000" }}
+          style={{ boxShadow: "inset 0px 0px 200px 130px #000" }}
           className="absolute z-10 w-[1920px] h-[1080px]"
         />
         <SVGs />
