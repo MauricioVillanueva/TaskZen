@@ -8,4 +8,5 @@ export const CreateList = z.object({
     message: "Title is too short",
   }),
   boardId: z.string(),
+  colors: z.array(z.string()),
 });

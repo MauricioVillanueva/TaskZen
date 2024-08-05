@@ -20,7 +20,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     };
   }
 
-  const { title, boardId } = data;
+  const { title, boardId, colors } = data;
   let list;
 
   try {
@@ -49,6 +49,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       data: {
         title,
         boardId,
+        colors,
         order: newOrder,
       },
     });
@@ -61,7 +62,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     })
   } catch (error) {
     return {
-      error: "Failed to create."
+      error: `"Failed to create. ${Array.isArray(colors)}, ${list}"` 
     }
   }
 

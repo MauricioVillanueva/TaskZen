@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { HoverBorderGradient } from "@/components/ui/hoverGradient";
 
 export const Footer = () => {
   return (
     <div className="w-full h-auto hidden lg:block">
-      <div className="w-full h-auto bg-[#0E0E0E] px-[60px] py-[44px] flex flex-col items-center justify-center gap-y-10">
+      <div className="w-full h-auto bg-[#080808] px-[60px] py-[44px] flex flex-col items-center justify-center gap-y-10">
         <div className="w-full h-auto flex justify-between items-center">
           <div className="w-[320px] text-white font-poppins font-semibold text-[24px]">
             Join our newsletter to keep up to date with us!
@@ -23,19 +24,17 @@ export const Footer = () => {
                 placeholder="Enter your email"
               />
             </div>
-            <button className="w-auto h-auto font-poppins font-medium text-white text-sm py-[12px] px-[28px] rounded-full transition-all duration-500 bg-gradient-to-br to-red-800 via-red-500 from-[#FC4F24] bg-size-200 hover:bg-right-bottom">
-              Subscribe
-            </button>
+            <HoverBorderGradient>Subscribe</HoverBorderGradient>
           </div>
         </div>
         <div className="w-full h-[0px] border border-white border-opacity-30"></div>
         <div className="w-full h-auto flex justify-between items-center">
           <div className="w-[380px] h-auto flex flex-col justify-center items-start font-poppins gap-y-[16px]">
-            <Image width={60} height={12} src="/Footer/Tazk.png" alt="Logo" />
+            <Image width={60} height={12} src="/TazkWhite.svg" alt="Logo" />
             <div className="self-stretch text-white text-2xl font-semibold">
-            Experience the future of task management with Tazk
+              Experience the future of task management with Tazk
             </div>
-            <div className="text-white text-base font-normal">Tazk, 2023.</div>
+            <div className="text-white text-base font-normal">Tazk, 2024.</div>
             <div className="text-white text-base font-normal">
               Designed/Developed by Mauricio Villanueva
             </div>
@@ -146,7 +145,7 @@ export const Footer = () => {
       </div>
       <div className="w-full h-auto px-20 py-6 bg-[#FC4F24] justify-between items-center inline-flex font-poppins">
         <div className="text-white text-sm font-normal">
-          © 2023 NEOGN Inc. All rights reserved.
+          © 2024 Tazk Inc. All rights reserved.
         </div>
         <div className="justify-start items-start gap-8 flex">
           <div className="text-white text-sm font-normal">Terms of Service</div>

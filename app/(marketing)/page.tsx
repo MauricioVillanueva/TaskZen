@@ -125,7 +125,7 @@ const MarketingPage = () => {
           </h2>
           <h4 className={cn("font-medium text-[20px]", roboto.className)}>
             Use the Roadmap to bring everyone together on the same page and help
-            keep them there. Use the Roadmap to bring everyone.
+            keep them there.
           </h4>
         </motion.div>
       </div>

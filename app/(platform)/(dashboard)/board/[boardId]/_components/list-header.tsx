@@ -18,6 +18,7 @@ export const ListHeader = ({ data, onAddCard, }: ListHeaderProps) => {
   const [title, setTitle] = useState(data.title);
   const [isEditing, setIsEditing] = useState(false);
 
+
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
 
@@ -72,8 +73,18 @@ export const ListHeader = ({ data, onAddCard, }: ListHeaderProps) => {
 
   useEventListener("keydown", onKeyDown);
 
+  const fromColor = data.colors[0] ? `#${data.colors[0]}` : "#00F6FF";
+  const viaColor = data.colors[1] ? `#${data.colors[1]}` : "#C8FF00";
+  const toColor = data.colors[2] ? `#${data.colors[2]}` : "#FFEE00";
+
+  const gradientStyle = {
+    backgroundImage: `linear-gradient(to bottom right, ${fromColor}, ${viaColor}, ${toColor})`
+  };
+
   return (
-    <div className="pt-2 px-2 text-sm font-semibold flex justify-between items-start- gap-x-2">
+    <div 
+    style={gradientStyle}
+    className={`py-2 px-2 h-auto text-sm font-semibold flex justify-between items-center gap-x-2 rounded-lg`}>
       {isEditing ? (
         <form ref={formRef} action={handleSubmit} className="flex-1 px-[2px]">
           <input hidden id="id" name="id" value={data.id} />
@@ -91,12 +102,11 @@ export const ListHeader = ({ data, onAddCard, }: ListHeaderProps) => {
       ) : (
         <div
           onClick={enableEditing}
-          className="w-full text-sm px-2.5 py-1 h-7 font-medium border-transparent"
-        >
+          className="w-full text-base px-2.5 py-1 h-7 font-bold border-transparent text-white text-center flex justify-center items-center uppercase bg-transparent">
           {title}
         </div>
       )}
-      <ListOptions onAddCard={onAddCard} data={data} />
+      <ListOptions onAddCard={onAddCard} data={data} dots={viaColor} />
     </div>
   );
 };

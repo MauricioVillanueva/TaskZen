@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: [
     {
-      url: "/TazkWhite.png",
-      href: "/TazkWhite.png",
+      url: "/TazkWhite.svg",
+      href: "/TazkWhite.svg",
     },
   ],
 };

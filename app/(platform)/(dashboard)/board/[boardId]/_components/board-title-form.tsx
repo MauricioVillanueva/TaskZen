@@ -3,6 +3,8 @@
 import { toast } from "sonner";
 import { ElementRef, useRef, useState } from "react";
 import { Board } from "@prisma/client";
+import { Arimo } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { FormInput } from "@/components/form/form-input";
@@ -11,11 +13,14 @@ import { useAction } from "@/hooks/use-action";
 
 interface BoardTitleFormProps {
   data: Board;
-};
+}
 
-export const BoardTitleForm = ({
-  data,
-}: BoardTitleFormProps) => {
+const arimo = Arimo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
   const { execute } = useAction(updateBoard, {
     onSuccess: (data) => {
       toast.success(`Board "${data.title}" updated!`);
@@ -24,7 +29,7 @@ export const BoardTitleForm = ({
     },
     onError: (error) => {
       toast.error(error);
-    }
+    },
   });
 
   const formRef = useRef<ElementRef<"form">>(null);
@@ -36,9 +41,9 @@ export const BoardTitleForm = ({
   const enableEditing = () => {
     setIsEditing(true);
     setTimeout(() => {
-     inputRef.current?.focus();
-     inputRef.current?.select(); 
-    })
+      inputRef.current?.focus();
+      inputRef.current?.select();
+    });
   };
 
   const disableEditing = () => {
@@ -47,7 +52,7 @@ export const BoardTitleForm = ({
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get("title") as string;
-    
+
     execute({
       title,
       id: data.id,
@@ -60,7 +65,11 @@ export const BoardTitleForm = ({
 
   if (isEditing) {
     return (
-      <form action={onSubmit} ref={formRef} className="flex items-center gap-x-2">
+      <form
+        action={onSubmit}
+        ref={formRef}
+        className="flex items-center gap-x-2"
+      >
         <FormInput
           ref={inputRef}
           id="title"
@@ -69,14 +78,14 @@ export const BoardTitleForm = ({
           className="text-lg font-bold px-[7px] py-1 h-7 bg-transparent focus-visible:outline-none focus-visible:ring-transparent border-none"
         />
       </form>
-    )
+    );
   }
-  
+
   return (
     <Button
       onClick={enableEditing}
       variant="transparent"
-      className="font-bold text-lg h-auto w-auto p-1 px-2"
+      className={cn("font-extrabold text-3xl h-auto w-auto p-1 px-2",arimo.className)}
     >
       {title}
     </Button>

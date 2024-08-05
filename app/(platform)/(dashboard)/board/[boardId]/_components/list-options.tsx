@@ -21,9 +21,10 @@ import { ElementRef, useRef } from "react";
 interface ListOptionsProps {
   data: List;
   onAddCard: () => void;
+  dots: string;
 }
 
-export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+export const ListOptions = ({ data, onAddCard, dots }: ListOptionsProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
 
   const { execute: executeDelete } = useAction(deleteList, {
@@ -60,14 +61,18 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
     executeCopy({ id, boardId });
   };
 
+  const buttonColor = dots === "#00FFEA" ? "#1A01FF" : dots;
+  
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="h-auto w-auto p-2" variant="ghost">
+        <Button
+        style={{ backgroundColor: "#F3F3F3", color: buttonColor }}
+         className={`h-fit w-auto p-[3px] rounded-full`} variant="ghost">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="px-0 py-3" side="bottom" align="start">
+      <PopoverContent className="px-0 py-3" side="bottom" align="end">
         <div className="text-sm font-medium text-center text-neutral-600 pb-4">
           List Actions
         </div>

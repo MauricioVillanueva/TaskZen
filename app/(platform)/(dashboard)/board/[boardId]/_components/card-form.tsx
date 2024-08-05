@@ -72,7 +72,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({
       <form
         ref={formRef}
         action={onSubmit}
-        className="m-1 py-0.5 px-1 space-y-4"
+        className="my-1 py-0.5 space-y-4"
       >
         <FormTextarea
           id="title"
@@ -100,15 +100,14 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({
   }
 
   return (
-    <div className="pt-2 px-2">
+    <div className="w-full h-auto flex items-center justify-center pt-2 pb-1">
       <Button
         onClick={enableEditing}
-        className="h-auto px-2 py-1.5 w-full justify-start text-muted-foreground text-sm"
+        className="h-auto w-fit justify-start text-muted-foreground text-sm text-slate-300 border-2 border-slate-300 border-dashed rounded-full p-[3px] hover:bg-transparent hover:text-white hover:border-white"
         size="sm"
         variant="ghost"
       >
-        <Plus className="h-4 w-4 mr-2" />
-        Add a card
+        <Plus className="h-5 w-5" strokeWidth={4} />
       </Button>
     </div>
   );
