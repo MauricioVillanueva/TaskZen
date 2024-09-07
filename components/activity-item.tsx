@@ -17,12 +17,12 @@ export const ActivityItem = ({
         <AvatarImage src={data.userImage} />
       </Avatar>
       <div className="flex flex-col space-y-0.5">
-        <p className="text-sm text-muted-foreground">
-          <span className="font-semibold lowercase text-neutral-700">
+        <p className="text-sm text-muted-foreground text-[#929aa3]">
+          <span className="font-semibold lowercase text-[#B6C2CF]">
             {data.userName}
           </span> {generateLogMessage(data)}
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-muted-foreground text-[#929aa3]">
           {format(new Date(data.createdAt), "MMM d, yyyy 'at' h:mm a")}
         </p>
       </div>

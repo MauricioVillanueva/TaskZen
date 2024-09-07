@@ -79,9 +79,9 @@ export const Description = ({
 
   return (
     <div className="flex items-start gap-x-3 w-full">
-      <AlignLeft className="h-5 w-5 mt-0.5 text-neutral-700" />
+      <AlignLeft className="h-5 w-5 mt-0.5 text-[#B6C2CF]" />
       <div className="w-full">
-        <p className="font-semibold text-neutral-700 mb-2">
+        <p className="font-semibold text-[#B6C2CF] mb-2">
           Description
         </p>
         {isEditing ? (
@@ -92,13 +92,13 @@ export const Description = ({
           >
             <FormTextarea
               id="description"
-              className="w-full mt-2"
+              className="w-full mt-2 text-[#0a0a0a] bg-[#e5e5e5]"
               placeholder="Add a more detailed description"
               defaultValue={data.description || undefined}
               errors={fieldErrors}
               ref={textareaRef}
             />
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center justify-end gap-x-2">
               <FormSubmit>
                 Save
               </FormSubmit>
@@ -106,7 +106,8 @@ export const Description = ({
                 type="button"
                 onClick={disableEditing}
                 size="sm"
-                variant="ghost"
+                className="bg-[#0a0a0a] border-[1px] border-[#6e6e6e]"
+                variant="default"
               >
                 Cancel
               </Button>
@@ -116,7 +117,7 @@ export const Description = ({
           <div
             onClick={enableEditing}
             role="button"
-            className="min-h-[78px] bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md"
+            className={`min-h-[58px] bg-[#383838] hover:bg-[#505050] text-sm font-medium py-3 px-3.5 rounded-md ${data.description ? 'text-[#B6C2CF]' : ''} `}
           >
             {data.description || "Add a more detailed description..."}
           </div>

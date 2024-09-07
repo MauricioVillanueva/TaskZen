@@ -68,14 +68,14 @@ export const Actions = ({
   
   return (
     <div className="space-y-2 mt-2">
-      <p className="text-xs font-semibold">
+      <p className="text-xs font-semibold text-[#B6C2CF]">
         Actions
       </p>
       <Button
         onClick={onCopy}
         disabled={isLoadingCopy}
         variant="gray"
-        className="w-full justify-start"
+        className="w-full justify-start bg-[#383838] text-white hover:bg-[#505050]"
         size="inline"
       >
         <Copy className="h-4 w-4 mr-2" />
@@ -85,7 +85,7 @@ export const Actions = ({
         onClick={onDelete}
         disabled={isLoadingDelete}
         variant="gray"
-        className="w-full justify-start"
+        className="w-full justify-start bg-[#383838] text-white hover:bg-[#505050]"
         size="inline"
       >
         <Trash className="h-4 w-4 mr-2" />

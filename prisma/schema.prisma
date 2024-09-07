@@ -48,6 +48,8 @@ model Card {
   order       Int
   description String? @db.Text
 
+  labels      Json?
+
   listId String
   list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
 

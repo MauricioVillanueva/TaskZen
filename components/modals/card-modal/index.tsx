@@ -12,6 +12,7 @@ import { Header } from "./header";
 import { Description } from "./description";
 import { Actions } from "./actions";
 import { Activity } from "./activity";
+import { AddToCard } from "./addToCard";
 
 export const CardModal = () => {
   const id = useCardModal((state) => state.id);
@@ -28,33 +29,30 @@ export const CardModal = () => {
     queryFn: () => fetcher(`/api/cards/${id}/logs`),
   });
 
+  
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={onClose}
-    >
-      <DialogContent>
-        {!cardData
-          ? <Header.Skeleton />
-          : <Header data={cardData} />
-        }
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="bg-[#272727] border-none text-[#B6C2CF]">
+        {!cardData ? <Header.Skeleton /> : <Header data={cardData} />}
         <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
           <div className="col-span-3">
             <div className="w-full space-y-6">
-              {!cardData
-                ? <Description.Skeleton />
-                : <Description data={cardData} />
-              }
-              {!auditLogsData
-                ? <Activity.Skeleton />
-                : <Activity items={auditLogsData} />
-              }
+              {!cardData ? (
+                <Description.Skeleton />
+              ) : (
+                <Description data={cardData} />
+              )}
+              {!auditLogsData ? (
+                <Activity.Skeleton />
+              ) : (
+                <Activity items={auditLogsData} />
+              )}
             </div>
           </div>
-          {!cardData
-            ? <Actions.Skeleton />
-            : <Actions data={cardData} />
-          }
+          <div>
+            {!cardData ? <AddToCard.Skeleton /> : <AddToCard data={cardData} />}
+            {!cardData ? <Actions.Skeleton /> : <Actions data={cardData} />}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

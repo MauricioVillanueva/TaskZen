@@ -73,9 +73,9 @@ export const ListHeader = ({ data, onAddCard, }: ListHeaderProps) => {
 
   useEventListener("keydown", onKeyDown);
 
-  const fromColor = data.colors[0] ? `#${data.colors[0]}` : "#00F6FF";
-  const viaColor = data.colors[1] ? `#${data.colors[1]}` : "#C8FF00";
-  const toColor = data.colors[2] ? `#${data.colors[2]}` : "#FFEE00";
+  const fromColor = data.colors[0] ? `#${data.colors[0]}` : "#00C3FF";
+  const viaColor = data.colors[1] ? `#${data.colors[1]}` : "#6F00FF";
+  const toColor = data.colors[2] ? `#${data.colors[2]}` : "#00C3FF";
 
   const gradientStyle = {
     backgroundImage: `linear-gradient(to bottom right, ${fromColor}, ${viaColor}, ${toColor})`
@@ -84,7 +84,7 @@ export const ListHeader = ({ data, onAddCard, }: ListHeaderProps) => {
   return (
     <div 
     style={gradientStyle}
-    className={`py-2 px-2 h-auto text-sm font-semibold flex justify-between items-center gap-x-2 rounded-lg`}>
+    className={`py-2 px-2 h-auto text-sm font-semibold flex justify-between items-center gap-x-2 rounded-lg hover:ring-2  border-transparent hover:ring-white`}>
       {isEditing ? (
         <form ref={formRef} action={handleSubmit} className="flex-1 px-[2px]">
           <input hidden id="id" name="id" value={data.id} />

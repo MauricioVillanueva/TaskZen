@@ -21,6 +21,9 @@ const dmSans = DM_Sans({
 export const CardItem = ({ data, index }: CardItemProps) => {
   const cardModal = useCardModal();
 
+  console.log(data.labels);
+  const hasAvailableLabels = data.labels.some((label) => label.available);
+
   return (
     <Draggable draggableId={data.id} index={index}>
       {(provided) => (
@@ -30,24 +33,47 @@ export const CardItem = ({ data, index }: CardItemProps) => {
           ref={provided.innerRef}
           role="button"
           onClick={() => cardModal.onOpen(data.id)}
-          className="border-2 border-transparent hover:border-white p-4 text-sm text-white bg-[#272727] rounded-lg shadow-sm flex flex-col gap-y-3"
+          className="border-2 border-transparent hover:border-white p-3 text-sm text-white bg-[#272727] rounded-lg shadow-sm flex flex-col gap-y-3"
         >
-          <section className="flex w-full h-auto gap-x-2">
-            <div className="flex items-center justify-start gap-x-2 gap-y-2 flex-wrap font-semibold text-xs">
-              <div className="bg-[#fcc9ac] text-[#FF5C00] py-1 px-2 rounded-md w-fit h-auto">
-                BackEnd
-              </div>
-              <div className="bg-[#CDF4DD] text-[#188544] py-1 px-2 rounded-md w-fit h-auto">
-                Research
-              </div>
-              <div className="bg-[#aff4ff] text-[#2C62B4] py-1 px-2 rounded-md w-fit h-auto ">
-                API
-              </div>
-              <div className="bg-[#f9c5fc] text-[#FF00B8] py-1 px-2 rounded-md w-fit h-auto">
-                Initial Design
-              </div>
+          {hasAvailableLabels && (
+            <section className="flex items-center justify-start gap-x-2 gap-y-2 flex-wrap font-semibold text-xs">
+              {data.labels[0].available && (
+                <div className="bg-[#ffd3ba] text-[#FF5C00] py-1 px-2 rounded-md w-fit h-auto">
+                  Backend
+                </div>
+              )}
+              {data.labels[1].available && (
+                <div className="bg-[#CDF4DD] text-[#188544] py-1 px-2 rounded-md w-fit h-auto">
+                  Research
+                </div>
+              )}
+              {data.labels[2].available && (
+                <div className="bg-[#a0aaff] text-[#001aff] py-1 px-2 rounded-md w-fit h-auto ">
+                  API
+                </div>
+              )}
+              {data.labels[3].available && (
+                <div className="bg-[#fbaeff] text-[#FF00B8] py-1 px-2 rounded-md w-fit h-auto">
+                  Initial Design
+                </div>
+              )}
+              {data.labels[4].available && (
+                <div className="bg-[#ff9c9c] text-[#ff0000] py-1 px-2 rounded-md w-fit h-auto">
+                  Fix
+                </div>
+              )}
+            </section>
+          )}
+          <section className="flex items-start">
+            <div className="flex flex-col">
+              <h2 className={cn("font-medium text-xl", dmSans.className)}>
+                {data.title}
+              </h2>
+              <p className={cn("text-[#828282] font-normal", dmSans.className)}>
+                {data.description}
+              </p>
             </div>
-            <div className="w-auto h-auto">
+            <div className="w-auto h-auto ml-auto">
               <Image
                 src="/../Priority/Highest.webp"
                 alt="Highest"
@@ -56,14 +82,6 @@ export const CardItem = ({ data, index }: CardItemProps) => {
               />
             </div>
           </section>
-          <div className="flex flex-col">
-            <h2 className={cn("font-medium text-xl", dmSans.className)}>
-              {data.title}
-            </h2>
-            <p className={cn("text-[#828282] font-normal", dmSans.className)}>
-              {data.description}
-            </p>
-          </div>
           <section className="w-full h-auto flex gap-x-3">
             <div className="w-auto h-auto flex gap-x-1 justify-center items-center">
               <Image
