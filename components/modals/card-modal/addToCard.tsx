@@ -24,6 +24,7 @@ export const AddToCard = ({ data }: AddToCardProps) => {
   const params = useParams();
   const cardModal = useCardModal();
 
+
   const { execute: executeCopyCard, isLoading: isLoadingCopy } = useAction(
     copyCard,
     {
@@ -71,7 +72,7 @@ export const AddToCard = ({ data }: AddToCardProps) => {
   return (
     <div className="space-y-2 mt-2">
       <p className="text-xs font-semibold text-[#B6C2CF]">Add To Card</p>
-      <Labels/>
+      <Labels data={data.labels}/>
       <Priority/>
       <Attachment/>
       <Members/>

@@ -21,7 +21,6 @@ const dmSans = DM_Sans({
 export const CardItem = ({ data, index }: CardItemProps) => {
   const cardModal = useCardModal();
 
-  console.log(data.labels);
   const hasAvailableLabels = data.labels.some((label) => label.available);
 
   return (

@@ -10,17 +10,47 @@ import {
 import { Tag, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CardWithList } from "@/types";
+import { JsonValue } from "@prisma/client/runtime/library";
 
-interface LabelsProps {
-  data: CardWithList;
+interface Label {
+  color: string;
+  title: string;
+  available: boolean;
 }
 
-export const Labels = ({data} : LabelsProps) => {
+interface LabelsProps {
+  data: JsonValue;
+}
+
+const colors: { [key: string]: string } = {
+  orange: "bg-LabOrange text-TLabOrange",
+  green: "bg-LabGreen text-TLabGreen",
+  blue: "bg-LabBlue text-TLabBlue",
+  pink: "bg-LabPink text-TLabPink",
+  red: "bg-LabRed text-TLabRed",
+};
+
+const isLabelArray = (data: unknown): data is Label[] => {
+  return (
+    Array.isArray(data) &&
+    data.every(
+      (item) =>
+        typeof item === "object" &&
+        item !== null &&
+        "color" in item &&
+        "title" in item &&
+        "available" in item
+    )
+  );
+};
+
+export const Labels = ({ data }: LabelsProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log(data);
+  const labels = isLabelArray(data) ? (data as Label[]) : [];
+
+  console.log(labels);
 
   const formRef = useRef<ElementRef<"form">>(null);
   const inputRef = useRef<ElementRef<"input">>(null);
@@ -66,10 +96,25 @@ export const Labels = ({data} : LabelsProps) => {
           </Button>
         </PopoverClose>
         <div className="h-auto w-auto gap-y-4 flex flex-col font-semibold">
-          <div className="w-full h-[26px] flex items-center pl-4 pr-3 gap-x-3">
+          {labels &&
+            labels.map((label: { color: string }, index: number) => {
+              const colorClasses =
+                colors[label.color] || "bg-gray-500 text-gray-700";
+              return (
+                <div className="w-full h-[26px] flex items-center pl-4 pr-3 gap-x-3">
+                  <Checkbox className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black" />
+                  <div
+                    className={`w-full h-auto ${colorClasses} items-center text-start  rounded-sm py-1 px-2`}
+                  >
+                    {label.color}
+                  </div>
+                </div>
+              );
+            })}
+          {/* <div className="w-full h-[26px] flex items-center pl-4 pr-3 gap-x-3">
             <Checkbox className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black" />
             <div className="w-full h-auto bg-LabOrange text-TLabOrange items-center text-start  rounded-sm py-1 px-2">
-            Text
+            {labels && labels[0].color}
             </div>
           </div>
           <div className="w-full h-[26px] flex items-center pl-4 pr-3 gap-x-3">
@@ -96,7 +141,7 @@ export const Labels = ({data} : LabelsProps) => {
             <div className="w-full h-auto bg-LabRed text-TLabRed items-center text-start  rounded-sm py-1 px-2">
               Text
             </div>
-          </div>
+          </div> */}
         </div>
       </PopoverContent>
     </Popover>
