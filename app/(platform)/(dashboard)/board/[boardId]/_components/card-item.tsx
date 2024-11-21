@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
 export const CardItem = ({ data, index }: CardItemProps) => {
   const cardModal = useCardModal();
 
-  const hasAvailableLabels = data.labels.some((label) => label.available);
+  // const hasAvailableLabels = data.labels.some((label) => label.available);
 
   return (
     <Draggable draggableId={data.id} index={index}>
@@ -34,7 +34,7 @@ export const CardItem = ({ data, index }: CardItemProps) => {
           onClick={() => cardModal.onOpen(data.id)}
           className="border-2 border-transparent hover:border-white p-3 text-sm text-white bg-[#272727] rounded-lg shadow-sm flex flex-col gap-y-3"
         >
-          {hasAvailableLabels && (
+          {/* {hasAvailableLabels && (
             <section className="flex items-center justify-start gap-x-2 gap-y-2 flex-wrap font-semibold text-xs">
               {data.labels[0].available && (
                 <div className="bg-[#ffd3ba] text-[#FF5C00] py-1 px-2 rounded-md w-fit h-auto">
@@ -62,7 +62,7 @@ export const CardItem = ({ data, index }: CardItemProps) => {
                 </div>
               )}
             </section>
-          )}
+          )} */}
           <section className="flex items-start">
             <div className="flex flex-col">
               <h2 className={cn("font-medium text-xl", dmSans.className)}>
